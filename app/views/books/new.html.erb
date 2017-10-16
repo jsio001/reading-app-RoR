@@ -1,0 +1,16 @@
+<h1 class="display-3">New Book</h1>
+<br>
+
+<div class="container">
+  <%= simple_form_for @book, url: books_path, method: :post do |f| %>
+    <%= f.input :author, label_html: { class: 'my_label' }, as: :text %>
+    <%= f.input :name, as: :text %>
+    <%= f.input :read %>
+    <br>
+    <%= f.button :submit %>
+  <% end %>
+  <br>
+  <button type="button" class="btn btn-outline-primary">
+    <%= link_to 'Full Book List', books_path %>
+  </button>
+</div>
