@@ -4,10 +4,6 @@ class BooksController < ApplicationController
     @book = Book.all.order(:author)
   end
 
-  def book_params
-    params.require(:book).permit(:author, :name, :read)
-  end
-
   def new
     @book = Book.new
   end
@@ -43,5 +39,10 @@ class BooksController < ApplicationController
     redirect_to books_path
   end
 
+private
+
+  def book_params
+    params.require(:book).permit(:author, :name, :read)
+  end
 
 end

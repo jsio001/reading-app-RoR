@@ -1,0 +1,14 @@
+<h1 class="display-3"><%= @book.name %></h1>
+<h3><%= @book.author %></h3>
+<h5><%= @book.read %></h5>
+  <br>
+<h3>Edit Bookmark</h3>
+  <br>
+<div class="container">
+  <%= simple_form_for @bookmark, url: book_bookmark_path(@book,@bookmark), method: :put do |f| %>
+    <%= f.input :page %>
+    <%= f.input :description %>
+      <br>
+    <%= f.button :submit %>
+  <% end %>
+</div>

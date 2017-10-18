@@ -19,8 +19,43 @@
       <td><%= link_to 'Destroy', book_path(@book), method: :delete, data: { confirm: 'Sure?' } %></td>
     </tbody>
   </table>
-</div>
+<br>
 
+    <h5>Bookmarks</h5>
+    <table class = "table">
+      <thead>
+        <tr>
+          <th>Page</th>
+          <th>Description</th>
+          <th>Actions</th>
+          <th colspan="3"></th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @book.bookmarks.each do |bookmark| %>
+          <tr>
+          <td><%= bookmark.page %></td>
+          <td><%= bookmark.description %></td>
+          <td>
+            <%= link_to 'Edit', edit_book_bookmark_path(@book,bookmark) %>
+            <br>
+            <%= link_to 'Destroy', book_bookmark_path(@book,bookmark), method: :delete, data: { confirm: 'Sure?' } %>
+          </td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+
+<br>
+    <h5>Add Bookmark</h5>
+    <p>
+      <%= simple_form_for @book.bookmarks.build, url: book_bookmarks_path(@book), method: :post do |f| %>
+      <%= f.input :page %><br>
+      <%= f.input :description %><br>
+      <%= f.button :submit %>
+      <% end %>
+    </p>
+</div>
 <br>
 <button type="button" class="btn btn-outline-primary">
 <%= link_to 'Full Book List', books_path %>
